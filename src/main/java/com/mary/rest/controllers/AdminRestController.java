@@ -15,13 +15,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
-public class ControllerAdmin {
+public class AdminRestController {
 
     private final UserService userService;
     private final RoleService roleService;
 
     @Autowired
-    public ControllerAdmin(UserService userService, RoleService roleService) {
+    public AdminRestController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
