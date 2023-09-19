@@ -13,7 +13,7 @@ function getEmailAndRoles(data) {
     });
     document.getElementById('UserEmail').innerHTML = currentUserEmail;
     document.getElementById('UserRoles').innerHTML = currentUserRoles;
-};
+}
 
 //заполнение данных currentUser в шапке
 currentUser.then(data => getEmailAndRoles(data))
@@ -31,7 +31,14 @@ function getUserTable(data) {
         <td>${user.lastName}</td>
         <td>${user.age} </td>
         <td>${user.email}</td>
-        <td>${user.roles.map(role => role.name.substring(5))}</td>
+        <td>
+        `;user.roles.forEach(e => {
+            let roleName = `${e.name}`;
+            let roleNewName = roleName.replace('ROLE_', ' ');
+            temp += `${roleNewName}`;
+        });
+        temp += `
+        </td>
         <td>
         <button class="btn btn-primary" id="editUserButton" data-bs-toggle="modal"
         data-bs-target="#editModal">Edit</button>
