@@ -29,10 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .cors().disable()
-                .csrf().disable()
+                .csrf().disable()   //отключаем защиту от межсайтовой подделки запросов
                 .authorizeRequests()
-
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
@@ -40,8 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/")
                 .successHandler(successUserHandler)
+                .failureUrl("/?error")
                 .loginProcessingUrl("/")
-                .usernameParameter("email")
+               .usernameParameter("email")
                 .passwordParameter("password")
                 .permitAll()
                 .and()
@@ -51,6 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
+
+    //для аутентификации
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
@@ -61,3 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+
+
+
+

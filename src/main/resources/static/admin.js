@@ -81,7 +81,7 @@ async function createNewUser(event) {
             rolesSelected.push({id: rolesForm.options[i].value, name: 'ROLE_' + rolesForm.options[i].innerHTML})
         }
     }
-    await fetch('/admin/new', {
+    await fetch('/admin/users', {
         method: 'POST',
         headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: JSON.stringify({
@@ -147,7 +147,8 @@ document.getElementById('editForm').addEventListener('submit', e => {
             rolesEditCell += rolesEd.options[i].innerHTML + ' '
         }
     }
-    fetch('/admin/edit', {
+
+     fetch('/admin/users', {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: JSON.stringify({
@@ -200,7 +201,8 @@ on(document, 'click', '#deleteUserButton', e => {
 
 document.getElementById('deleteForm').addEventListener('submit', e => {
     e.preventDefault()
-    fetch('/admin/delete/' + rowDelete.children[0].innerHTML, {
+        fetch('/admin/' + rowDelete.children[0].innerHTML, {
+
         method: 'DELETE'
     }).then(() => {
         document.getElementById('closeDelete').click();

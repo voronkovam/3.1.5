@@ -1,19 +1,16 @@
 package com.mary.rest.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
-  //  public class Role   {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(unique = true)

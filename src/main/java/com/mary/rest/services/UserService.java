@@ -17,5 +17,5 @@ public interface UserService extends UserDetailsService {
 
     void removeUserById(long id);
 
-  //  UserDetails loadUserByUsername(String username);
+
 }

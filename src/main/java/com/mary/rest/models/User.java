@@ -3,8 +3,6 @@ package com.mary.rest.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -15,9 +13,10 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
-//    public class User   {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -38,6 +37,8 @@ public class User implements UserDetails {
 
     @Column(name = "password")
     private String password;
+
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
@@ -110,6 +111,8 @@ public class User implements UserDetails {
     public String getUsername() {
         return email;
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

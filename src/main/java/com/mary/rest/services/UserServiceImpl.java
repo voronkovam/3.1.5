@@ -4,9 +4,7 @@ import com.mary.rest.models.User;
 import com.mary.rest.repositories.UserRepository;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -59,7 +57,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> userDetails = Optional.ofNullable(userRepository.findUserByEmail(email));
-        if (!userDetails.isPresent()) {
+        if (userDetails.isEmpty()) {
             throw new UsernameNotFoundException(email + " not found");
         }
         return userDetails.get();
