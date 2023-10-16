@@ -29,7 +29,6 @@ public class AdminRestController {
 
     @GetMapping("currentUser")
     public ResponseEntity<User> getUser(@AuthenticationPrincipal User user) {
-        // System.out.println(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -38,6 +37,7 @@ public class AdminRestController {
     public ResponseEntity<List<User>> getListUsers() {
         return ResponseEntity.ok(userService.getListUsers());
     }
+
 
     @GetMapping("roles")
     public ResponseEntity<List<Role>> getAllRoles() {

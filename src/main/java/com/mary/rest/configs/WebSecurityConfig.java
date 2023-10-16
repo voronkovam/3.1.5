@@ -1,7 +1,5 @@
 package com.mary.rest.configs;
 
-
-
 import com.mary.rest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

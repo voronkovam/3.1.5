@@ -3,7 +3,6 @@ package com.mary.rest.services;
 import com.mary.rest.models.User;
 import com.mary.rest.repositories.UserRepository;
 
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
+
 
     private final UserRepository userRepository;
 

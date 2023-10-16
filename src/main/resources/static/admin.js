@@ -100,7 +100,7 @@ async function createNewUser(event) {
 
 const on = (element, event, selector, handler) => {
     element.addEventListener(event, e => {
-        if (e.target.closest(selector)) {
+        if (e.target.closest(selector)) {   //Метод elem.closest(selector) возвращает ближайшего предка, соответствующего селектору.
             handler(e.target)
         }
     })
